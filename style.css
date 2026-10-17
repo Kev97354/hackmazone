@@ -100,16 +100,13 @@ section{padding:104px 0}
 .icard p{color:var(--muted);font-size:15px}
 .icard--accent{border-color:rgba(52,211,153,.28);box-shadow:inset 0 0 0 1px rgba(52,211,153,.05)}
 
-/* certifications badges */
-.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.badge{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);
-  border-radius:12px;padding:12px 16px 12px 14px;min-width:200px;transition:.2s}
-.badge:hover{border-color:var(--border-strong);transform:translateY(-2px)}
-.badge::before{content:"";width:4px;align-self:stretch;border-radius:3px;background:var(--accent)}
-.badge .org{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.14em;color:var(--green);text-transform:uppercase}
-.badge .ttl{font-family:"Space Grotesk";font-weight:600;font-size:14.5px;margin-top:2px}
-.badge img{width:44px;height:44px;object-fit:contain}
-.badge-note{margin-top:14px;color:var(--muted-2);font-size:12.5px;font-family:"JetBrains Mono"}
+/* certifications badges (images officielles) */
+.badges{display:flex;flex-wrap:wrap;gap:20px 26px;margin-top:34px;align-items:flex-start;justify-content:center}
+.badge{display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;transition:transform .2s}
+.badge:hover{transform:translateY(-4px)}
+.badge img{width:104px;height:auto;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
+.badge .cap{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-align:center;line-height:1.3}
+.badge-note{margin-top:20px;color:var(--muted-2);font-size:12.5px;font-family:"JetBrains Mono";text-align:center}
 
 /* cards grid */
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
