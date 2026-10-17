@@ -84,8 +84,28 @@ section{padding:104px 0}
     radial-gradient(900px 400px at 85% 100%,rgba(34,211,238,.30),transparent 60%),
     linear-gradient(120deg,#07141a,#0a1322 60%,#0c1020);
   background-size:cover;background-position:center;height:440px;position:relative;overflow:hidden}
-.media::after{content:"";position:absolute;inset:0;
+.media::after{content:"";position:absolute;inset:0;z-index:2;
   background-image:repeating-linear-gradient(90deg,rgba(45,212,238,.06) 0 1px,transparent 1px 42px);opacity:.6}
+
+/* mouvement Ken Burns sur toutes les grandes images */
+.media,.band,.titleband{background-size:118%;animation:kenburns 26s ease-in-out infinite alternate}
+@keyframes kenburns{
+  0%{background-size:116%;background-position:46% 42%}
+  100%{background-size:128%;background-position:56% 58%}
+}
+@media(prefers-reduced-motion:reduce){.media,.band,.titleband{animation:none;background-size:cover}}
+
+/* section-titre bandeau (respiration) */
+.titleband{position:relative;min-height:340px;border-radius:0;display:grid;place-items:center;
+  text-align:center;overflow:hidden;margin:0;
+  background-image:linear-gradient(180deg,rgba(7,10,16,.72),rgba(7,10,16,.82)),url("assets/banner.jpg");
+  background-position:center}
+.titleband .inner{position:relative;z-index:2;max-width:760px;padding:60px 24px}
+.titleband .eyebrow{display:block;margin-bottom:16px}
+.titleband h2{font-size:clamp(28px,5vw,48px);margin-bottom:14px}
+.titleband p{color:var(--muted);font-size:17px;max-width:600px;margin:0 auto}
+.titleband::after{content:"";position:absolute;inset:0;z-index:1;
+  background-image:repeating-linear-gradient(90deg,rgba(45,212,238,.05) 0 1px,transparent 1px 48px);opacity:.5}
 .vision .media{height:560px;
   background-image:linear-gradient(180deg,rgba(7,10,16,.25),rgba(7,10,16,.7)),
     url("assets/vision.jpg"),
@@ -100,13 +120,21 @@ section{padding:104px 0}
 .icard p{color:var(--muted);font-size:15px}
 .icard--accent{border-color:rgba(52,211,153,.28);box-shadow:inset 0 0 0 1px rgba(52,211,153,.05)}
 
-/* certifications badges (images officielles) */
-.badges{display:flex;flex-wrap:wrap;gap:20px 26px;margin-top:34px;align-items:flex-start;justify-content:center}
-.badge{display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;transition:transform .2s}
-.badge:hover{transform:translateY(-4px)}
-.badge img{width:104px;height:auto;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
-.badge .cap{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-align:center;line-height:1.3}
-.badge-note{margin-top:20px;color:var(--muted-2);font-size:12.5px;font-family:"JetBrains Mono";text-align:center}
+/* certifications badges — tuiles uniformes */
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.badge{display:flex;flex-direction:column;align-items:center;gap:0;
+  background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.2s}
+.badge:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+.badge{text-decoration:none}
+.badge .pic{width:100%;height:132px;display:grid;place-items:center;
+  background:radial-gradient(120px 80px at 50% 30%,rgba(45,212,238,.07),transparent 70%);padding:16px}
+.badge img{max-height:100px;max-width:88%;width:auto;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.45))}
+.badge .cap{transition:color .2s}
+.badge:hover .cap{color:var(--cyan)}
+.badge .cap{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.04em;color:var(--muted);
+  text-align:center;line-height:1.35;padding:12px 10px 14px}
+@media(max-width:860px){.badges{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.badges{grid-template-columns:1fr 1fr}}
 
 /* cards grid */
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
@@ -186,6 +214,46 @@ footer{border-top:1px solid var(--border);padding:46px 0 40px;background:var(--b
 /* full-bleed (images plus larges) */
 .bleed{width:100vw;position:relative;left:50%;margin-left:-50vw;border-radius:0 !important;border-left:0;border-right:0}
 
+/* secteurs grid */
+.sectors{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.sector{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 18px;
+  text-align:center;transition:.2s}
+.sector:hover{border-color:var(--border-strong);transform:translateY(-3px);background:var(--panel-2)}
+.sector .ic{width:46px;height:46px;margin:0 auto 12px;display:grid;place-items:center;border-radius:12px;
+  background:rgba(45,212,238,.1);font-size:22px}
+.sector h3{font-size:16px;margin-bottom:5px}
+.sector p{color:var(--muted);font-size:13px}
+@media(max-width:860px){.sectors{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.sectors{grid-template-columns:1fr 1fr}}
+
+/* enjeux triptyque */
+.enjeux3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.enjeu{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+  border:1px solid var(--border);border-radius:16px;padding:26px}
+.enjeu .tag{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin-bottom:12px}
+.enjeu h3{font-size:19px;margin-bottom:10px}
+.enjeu p{color:var(--muted);font-size:14.5px}
+@media(max-width:860px){.enjeux3{grid-template-columns:1fr}}
+
+/* stake line under pillars */
+.stake{display:inline-flex;align-items:center;gap:8px;margin-top:4px;
+  font-family:"JetBrains Mono";font-size:12px;letter-spacing:.04em;color:var(--eyebrow)}
+.stake::before{content:"◈";color:var(--green)}
+
+/* range sliders (simulateur) */
+.slider-field{margin-bottom:20px}
+.slider-field label{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);margin-bottom:10px}
+.slider-field label b{color:var(--text);font-family:"JetBrains Mono"}
+.slider-field .scale{display:flex;justify-content:space-between;margin-top:6px;
+  font-size:11px;color:var(--muted-2);font-family:"JetBrains Mono"}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:5px;
+  background:#1a2335;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--cyan);cursor:pointer;box-shadow:0 2px 8px rgba(45,212,238,.5)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;
+  background:var(--cyan);cursor:pointer}
+
 /* interactive tools: simulateur + diagnostic */
 .tool{background:var(--panel);border:1px solid var(--border-strong);border-radius:18px;padding:30px;margin-top:40px}
 .tool .eyebrow{display:block;margin-bottom:10px}
@@ -212,6 +280,45 @@ footer{border-top:1px solid var(--border);padding:46px 0 40px;background:var(--b
 .quiz-result{margin-top:22px;border-top:1px solid var(--border);padding-top:22px;display:none}
 .quiz-result.show{display:block}
 .quiz-score{font-family:"Space Grotesk";font-weight:700;font-size:38px}
+
+/* emphase rouge */
+.hot{color:#ff5a5f;font-weight:600}
+.hot-badge{display:inline-block;background:rgba(255,90,95,.12);border:1px solid rgba(255,90,95,.4);
+  color:#ff8488;font-family:"JetBrains Mono";font-size:11px;letter-spacing:.06em;padding:3px 9px;border-radius:20px;margin-top:8px}
+
+/* sous-partie dédiée */
+.subhead{margin-top:40px;margin-bottom:4px}
+.subhead .eyebrow{display:block;margin-bottom:8px}
+.subhead h4{font-family:"Space Grotesk";font-size:22px;letter-spacing:-.01em}
+
+/* diagrammes */
+.diagram{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:26px;margin-top:16px}
+.diagram h4{font-family:"Space Grotesk";font-size:17px;margin-bottom:4px}
+.diagram .cap{color:var(--muted-2);font-size:13px;font-family:"JetBrains Mono";margin-bottom:16px}
+.diagram svg{width:100%;height:auto;display:block}
+
+/* résultat simulateur risque */
+.risk-out{margin-top:24px;border-top:1px solid var(--border);padding-top:22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.risk-pill{font-family:"Space Grotesk";font-weight:700;font-size:22px;padding:8px 20px;border-radius:30px}
+
+/* tarifs */
+.pricing{margin-top:40px;background:linear-gradient(135deg,rgba(34,211,238,.06),rgba(52,211,153,.05));
+  border:1px solid var(--border-strong);border-radius:20px;padding:36px;display:grid;
+  grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.pricing .big-claim{font-family:"Space Grotesk";font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.1;margin-bottom:16px}
+.pricing .big-claim .hl{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pricing p{color:var(--muted);font-size:15.5px;margin-bottom:10px}
+.pricing .why-list{list-style:none;padding:0;margin:18px 0 0}
+.pricing .why-list li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:14.5px}
+.pricing .why-list li:last-child{border-bottom:0}
+.pricing .why-list .ic{color:var(--green);flex:0 0 auto}
+.price-badge{text-align:center;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:30px 24px}
+.price-badge .num{font-family:"Space Grotesk";font-weight:700;font-size:56px;line-height:1;
+  background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+.price-badge .sub{color:var(--muted);font-size:14px;margin-top:8px}
+.price-badge hr{border:0;border-top:1px dashed var(--border);margin:20px 0}
+.price-badge .note{font-size:12.5px;color:var(--muted-2);font-family:"JetBrains Mono";line-height:1.5}
+@media(max-width:860px){.pricing{grid-template-columns:1fr;padding:26px}}
 
 /* FAQ */
 .faq{margin-top:44px;display:flex;flex-direction:column;gap:10px}
