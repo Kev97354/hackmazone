@@ -1,0 +1,49 @@
+/* ===== HACK'MAZONE — styles partagés des pages légales ===== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+:root{
+  --bg:#070a10;--bg-2:#0a0e16;--panel:#0d1220;--border:rgba(255,255,255,.08);
+  --text:#e9eef6;--muted:#8a97ab;--muted-2:#657186;--cyan:#2dd4ee;--green:#34d399;--eyebrow:#38bdf8;
+  --accent:linear-gradient(100deg,#22d3ee,#34d399);--maxw:820px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(7,10,16,.82);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;gap:12px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:700;font-size:17px;color:var(--text)}
+.logo{width:34px;height:34px}
+.back{margin-left:auto;font-size:14px;color:var(--muted);font-family:"JetBrains Mono"}
+.back:hover{color:var(--cyan)}
+
+/* content */
+main{padding:56px 0 80px}
+.eyebrow{font-family:"JetBrains Mono";font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--eyebrow)}
+h1{font-family:"Space Grotesk";font-size:clamp(30px,5vw,46px);letter-spacing:-.02em;margin:14px 0 10px;line-height:1.1}
+.updated{color:var(--muted-2);font-size:13px;font-family:"JetBrains Mono";margin-bottom:40px}
+h2{font-family:"Space Grotesk";font-size:22px;margin:40px 0 12px;letter-spacing:-.01em}
+h3{font-family:"Space Grotesk";font-size:17px;margin:24px 0 8px}
+p,li{color:#c3ccd9;font-size:15.5px}
+ul{padding-left:20px}
+li{margin-bottom:6px}
+.todo{background:rgba(234,179,8,.12);border:1px solid rgba(234,179,8,.35);color:#f5d98b;
+  padding:2px 7px;border-radius:5px;font-family:"JetBrains Mono";font-size:13px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px}
+td,th{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-family:"Space Grotesk"}
+.box{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin:18px 0}
+hr{border:0;border-top:1px dashed rgba(56,189,248,.3);margin:40px 0}
+
+/* footer */
+footer{border-top:1px solid var(--border);background:var(--bg-2);padding:34px 0;margin-top:40px}
+.foot{display:flex;flex-wrap:wrap;gap:14px 20px;max-width:var(--maxw);margin:0 auto;padding:0 24px;
+  color:var(--muted);font-size:13px}
+.foot a{color:var(--muted)}.foot a:hover{color:var(--text)}
+.foot .sep{color:var(--muted-2);font-family:"JetBrains Mono";width:100%;margin-top:8px}
